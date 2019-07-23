@@ -7,14 +7,14 @@
 # Mail Server #
 ###############
 
-# mail.backend: 'smtp'  # Use dummy if you want to disable email entirely
-# mail.host: 'localhost'
-# mail.port: 25
-# mail.username: ''
-# mail.password: ''
-# mail.use-tls: false
-# The email address to send on behalf of
-# mail.from: 'root@localhost'
+mail.backend: 'smtp'  # Use dummy if you want to disable email entirely
+mail.host: 'smtp.gmail.com'
+mail.port: 587
+mail.username: 'learn@makkajai.com'
+mail.password: 'LM123@makkajai.com'
+mail.use-tls: true
+#The email address to send on behalf of
+mail.from: 'learn@makkajai.com'
 
 # If you'd like to configure email replies, enable this.
 # mail.enable-replies: false
