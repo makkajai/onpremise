@@ -75,3 +75,8 @@ docker-compose.override.yml
 data/
 .vscode/tags
 .DS_Store
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

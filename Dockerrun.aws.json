@@ -1,4 +1,5 @@
 {
+	"AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
         {
             "command": [
@@ -24,7 +25,7 @@
                 }
             ],
             "essential": true,
-            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry",
+            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry-1:latest",
             "memory": 512,
             "mountPoints": [
                 {
@@ -32,6 +33,12 @@
                     "sourceVolume": "Sentry-Data"
                 }
             ],
+	        "links": [
+	            "memcached", 
+	            "redis", 
+	            "postgres", 
+	            "smtp"				
+	        ],
             "name": "cron"
         },
         {
@@ -84,7 +91,7 @@
                 }
             ],
             "essential": true,
-            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry",
+            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry-1:latest",
             "memory": 1024,
             "mountPoints": [
                 {
@@ -92,6 +99,12 @@
                     "sourceVolume": "Sentry-Data"
                 }
             ],
+	        "links": [
+	            "memcached", 
+	            "redis", 
+	            "postgres", 
+	            "smtp"				
+	        ],
             "name": "web",
             "portMappings": [
                 {
@@ -124,7 +137,7 @@
                 }
             ],
             "essential": true,
-            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry",
+            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry-1:latest",
             "memory": 512,
             "mountPoints": [
                 {
@@ -132,6 +145,12 @@
                     "sourceVolume": "Sentry-Data"
                 }
             ],
+	        "links": [
+	            "memcached", 
+	            "redis", 
+	            "postgres", 
+	            "smtp"				
+	        ],
             "name": "worker"
         }
     ],
