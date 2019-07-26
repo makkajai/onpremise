@@ -1,0 +1,153 @@
+{
+    "containerDefinitions": [
+        {
+            "command": [
+                "run",
+                "cron"
+            ],
+            "environment": [
+                {
+                    "name": "SENTRY_MEMCACHED_HOST",
+                    "value": "memcached"
+                },
+                {
+                    "name": "SENTRY_REDIS_HOST",
+                    "value": "redis"
+                },
+                {
+                    "name": "SENTRY_POSTGRES_HOST",
+                    "value": "postgres"
+                },
+                {
+                    "name": "SENTRY_EMAIL_HOST",
+                    "value": "smtp"
+                }
+            ],
+            "essential": true,
+            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry",
+            "memory": 512,
+            "mountPoints": [
+                {
+                    "containerPath": "/var/lib/sentry/files",
+                    "sourceVolume": "Sentry-Data"
+                }
+            ],
+            "name": "cron"
+        },
+        {
+            "essential": true,
+            "image": "memcached:1.5-alpine",
+            "memory": 256,
+            "name": "memcached"
+        },
+        {
+            "essential": true,
+            "image": "postgres:9.5",
+            "memory": 1024,
+            "mountPoints": [
+                {
+                    "containerPath": "/var/lib/postgresql/data",
+                    "sourceVolume": "Sentry-Postgres"
+                }
+            ],
+            "name": "postgres"
+        },
+        {
+            "essential": true,
+            "image": "redis:3.2-alpine",
+            "memory": 256,
+            "name": "redis"
+        },
+        {
+            "essential": true,
+            "image": "tianon/exim4",
+            "memory": 256,
+            "name": "smtp"
+        },
+        {
+            "environment": [
+                {
+                    "name": "SENTRY_MEMCACHED_HOST",
+                    "value": "memcached"
+                },
+                {
+                    "name": "SENTRY_REDIS_HOST",
+                    "value": "redis"
+                },
+                {
+                    "name": "SENTRY_POSTGRES_HOST",
+                    "value": "postgres"
+                },
+                {
+                    "name": "SENTRY_EMAIL_HOST",
+                    "value": "smtp"
+                }
+            ],
+            "essential": true,
+            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry",
+            "memory": 1024,
+            "mountPoints": [
+                {
+                    "containerPath": "/var/lib/sentry/files",
+                    "sourceVolume": "Sentry-Data"
+                }
+            ],
+            "name": "web",
+            "portMappings": [
+                {
+                    "containerPort": 9000,
+                    "hostPort": 9000
+                }
+            ]
+        },
+        {
+            "command": [
+                "run",
+                "worker"
+            ],
+            "environment": [
+                {
+                    "name": "SENTRY_MEMCACHED_HOST",
+                    "value": "memcached"
+                },
+                {
+                    "name": "SENTRY_REDIS_HOST",
+                    "value": "redis"
+                },
+                {
+                    "name": "SENTRY_POSTGRES_HOST",
+                    "value": "postgres"
+                },
+                {
+                    "name": "SENTRY_EMAIL_HOST",
+                    "value": "smtp"
+                }
+            ],
+            "essential": true,
+            "image": "711353282859.dkr.ecr.us-west-2.amazonaws.com/sentry",
+            "memory": 512,
+            "mountPoints": [
+                {
+                    "containerPath": "/var/lib/sentry/files",
+                    "sourceVolume": "Sentry-Data"
+                }
+            ],
+            "name": "worker"
+        }
+    ],
+    "family": "",
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "sentry-postgres"
+            },
+            "name": "Sentry-Postgres"
+        },
+        {
+            "host": {
+                "sourcePath": "sentry-data"
+            },
+            "name": "Sentry-Data"
+        }
+    ]
+}
