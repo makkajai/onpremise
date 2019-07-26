@@ -22,6 +22,10 @@
                 {
                     "name": "SENTRY_EMAIL_HOST",
                     "value": "smtp"
+                },
+                {
+                    "name": "SENTRY_SECRET_KEY",
+                    "value": "i)fumskz*z)yyvquza74ci7d+&ktaxz!!k5wd8cn^p@k=ffu+k"
                 }
             ],
             "essential": true,
@@ -88,6 +92,10 @@
                 {
                     "name": "SENTRY_EMAIL_HOST",
                     "value": "smtp"
+                },
+                {
+                    "name": "SENTRY_SECRET_KEY",
+                    "value": "i)fumskz*z)yyvquza74ci7d+&ktaxz!!k5wd8cn^p@k=ffu+k"
                 }
             ],
             "essential": true,
@@ -134,6 +142,10 @@
                 {
                     "name": "SENTRY_EMAIL_HOST",
                     "value": "smtp"
+                },
+                {
+                    "name": "SENTRY_SECRET_KEY",
+                    "value": "i)fumskz*z)yyvquza74ci7d+&ktaxz!!k5wd8cn^p@k=ffu+k"
                 }
             ],
             "essential": true,
